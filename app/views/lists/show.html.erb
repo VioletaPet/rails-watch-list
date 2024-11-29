@@ -1,13 +1,39 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="<%= root_path %>">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="<%= lists_path %>">Back to lists</a>
+        </li>
+        <!--li class="nav-item"-->
+        <!--/li-->
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 <h1><%= @list.name %></h1>
-<br>
-
-<% @bookmarks.each do |bookmark| %>
-  <img src='bookmark.movie.poster_url' alt="Movie Poster">
-  <h3><%= bookmark.movie.title %></h3>
-  <p><%= bookmark.movie.overview %></p>
-  <p><em><%= bookmark.comment %></em></p>
-  <p><%= bookmark.movie.rating %></p>
-<% end %>
-
+<div class="movie-container">
+  <% @bookmarks.each do |bookmark| %>
+    <div class="card-movie">
+      <img src="<%= bookmark.movie.poster_url %>" alt="Movie Poster" />
+      <div class="card-movie-infos">
+        <div>
+          <h2><%= bookmark.movie.title %></h2>
+          <span><p><%= bookmark.movie.rating %></p></span>
+          <p><%= bookmark.movie.overview %></p>
+          <p><em><%= bookmark.comment %></em></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <%= link_to "Add movie", new_list_bookmark_path(@list), class: "btn btn-primary" %>
-<%= link_to "Back to all", lists_path, class: "btn btn-primary" %>
